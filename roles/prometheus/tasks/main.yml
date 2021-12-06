@@ -1,0 +1,25 @@
+---
+#- name: 拷贝YAML文件到Master
+#  copy: src=./manifests.tar.gz dest={{ tmp_dir }}
+
+- name: 分发并解压prometheus
+  unarchive:
+    src: "./manifests.tar.gz"
+    dest: "{{ tmp_dir }}"
+
+- name: 部署prometheus
+  ignore_errors: yes 
+  shell: |
+         cd {{ tmp_dir }}/manifests/setup
+         kubectl apply -f .
+         cd {{ tmp_dir }}/manifests
+         kubectl apply -f .
+
+- name: 生成prometheus ingress配置文件
+  template: src=./ingress.j2 dest={{ tmp_dir }}/prome-ingress.yml
+  tags: ['prometheus_ingress']
+  
+
+- name: 创建prometheus ingress
+  ignore_errors: yes
+  shell: cd {{ tmp_dir }} && kubectl apply -f prome-ingress.yml

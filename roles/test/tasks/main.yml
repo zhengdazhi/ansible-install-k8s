@@ -1,0 +1,7 @@
+---
+- name: "get ip"
+  command: ifconfig
+  register: ipaddress
+
+- name: "echo ip"
+  debug: msg={{ ipaddress }}

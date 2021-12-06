@@ -1,0 +1,17 @@
+{
+  "registry-mirrors": [
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ],
+  "insecure-registries": ["192.168.31.70"],
+  "log-driver": "json-file",
+  "max-concurrent-downloads": 10,
+  "max-concurrent-uploads": 5,
+  "log-opts": {
+        "max-size": "300m",
+        "max-file": "2"
+  },
+  "storage-driver": "overlay2",
+  "live-restore": true
+}
