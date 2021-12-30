@@ -48,7 +48,7 @@ cert_hosts:
 ![avatar](single-master.jpg)
 
 多Master架构
-![avatar](multi-master.jpg)
+![](images/5.png)
 ### 4.2 部署命令
 单Master版：
 ```
@@ -92,7 +92,7 @@ k8s-node2     Ready    <none>   9h    v1.20.4
 ### 6.3 所有HTTPS证书存放路径
 部署产生的证书都会存放到目录“ansible-install-k8s-master/ssl”，一定要保存好，后面还会用到~
 
-7、部署kuboard
+## 7、部署kuboard
 
 kuboard管理界面最好独立k8s部署
 
